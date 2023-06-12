@@ -1,0 +1,56 @@
+[
+  {
+    "full_name": "Scott Morrison",
+    "description": "The Prime Minister",
+    "img_src": "https://pbs.twimg.com/profile_images/1116081523394891776/AYnEcQnG_400x400.png",
+    "screen_name": "ScottMorrisonMP"
+  },
+  {
+    "full_name": "Daniel Andrews",
+    "description": "Premier - Victoria",
+    "img_src": "https://i.ibb.co/x3pcTpw/Daniel-Andrews-2018.jpg",
+    "screen_name": "DanielAndrewsMP"
+  },
+  {
+    "full_name": "Gladys Berejiklian",
+    "description": "Premier - New South Wales",
+    "img_src": "https://i.ibb.co/88bXd67/Gladys-Berejiklian-NSW-cropped.jpg",
+    "screen_name": "GladysB"
+  },
+  {
+    "full_name": "Andrew Barr",
+    "description": "Chief Minister, Australian Capital Territory",
+    "img_src": "https://i.ibb.co/18zZNRc/Andrew-Barrportrait-cropped.jpg",
+    "screen_name": "ABarrMLA"
+  },
+  {
+    "full_name": "Annastacia Palaszczuk",
+    "description": "Premier - Queensland",
+    "img_src": "https://i.ibb.co/J2nKL7q/160817-N-BN625-001-BRISBANE-Australia-Aug-17-20016-Queensland-Premier-Annastacia-Palaszczuk-and-U-S.jpg",
+    "screen_name": "AnnastaciaMP"
+  },
+  {
+    "full_name": "Steven Marshall",
+    "description": "Premier - South Australia",
+    "img_src": "https://i.ibb.co/DbsxZZ7/Premier-Marshall2018.jpg",
+    "screen_name": "marshall_steven"
+  },
+  {
+    "full_name": "Mark McGowan",
+    "description": "Premier - Western Australia",
+    "img_src": "https://i.ibb.co/bb7jkff/Mark-Mc-Gowan-headshot.jpg",
+    "screen_name": "MarkMcGowanMP"
+  },
+  {
+    "full_name": "Michael Gunner",
+    "description": "Chief Minister - Northern Territory",
+    "img_src": "https://i.ibb.co/GshFrxq/Michael-Gunner.jpg",
+    "screen_name": "fanniebay"
+  },
+  {
+    "full_name": "Peter Gutwein",
+    "description": "Premier - Tasmania",
+    "img_src": "https://i.ibb.co/pQ5LSM8/Peter-Gutwein.jpg",
+    "screen_name": "GutweinTeam"
+  }
+]

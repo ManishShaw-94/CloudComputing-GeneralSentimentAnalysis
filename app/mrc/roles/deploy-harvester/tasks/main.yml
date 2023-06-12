@@ -1,0 +1,42 @@
+---
+
+# Cloning Repository
+- name: clone a Project repository
+  become: true
+  git:
+    repo: "https://{{gituser}}:{{gitpass}}@gitlab.com/AbhishekYadav142110/comp90024-2.git"
+    dest: '{{web_path}}'
+    accept_hostkey: yes
+    force: yes
+    version: master
+
+- name: clone a Twint repository
+  become: true
+  git:
+    repo: "https://github.com/sidsawant25/group65-twint.git"
+    dest: '{{twint_path}}'
+    accept_hostkey: yes
+    force: yes
+
+# Installing Dependencies
+- name: Install pip3
+  become: true
+  apt:
+    name: ['python3-pip']
+    state: latest
+    update_cache: yes
+
+- name: Install Dependencies 
+  become: true
+  shell: 'pip3 install {{twint_path}} -r {{twint_path}}/requirements.txt'
+
+
+# Stop Existing and Start New Harvester
+- name: Kill harvester if Already Running
+  become: true
+  shell: "pkill -f 'python3 {{web_path}}/harvester/harvestmultithreading.py' || true"
+  ignore_errors: true
+
+- name: Start Harvester
+  become: true
+  shell: 'nohup python3 {{web_path}}/harvester/harvestmultithreading.py &>{{web_path}}/harvester/nohup.out &'

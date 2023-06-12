@@ -1,0 +1,27 @@
+- hosts: localhost
+  vars:
+    ansible_python_interpreter:  /usr/bin/python3.6
+  # Variable file
+  vars_files:
+    - host_vars/mrc.yaml
+  gather_facts: true
+
+  roles:
+    - role: openstack-common # Install necessary packages on localhost
+    - role: openstack-volume # Create specified volume in vars_files
+    - role: openstack-security-group # Create specified security group 
+    - role: openstack-instance # Create Instance
+
+
+- hosts: webservers
+  vars:
+    ansible_python_interpreter:  /usr/bin/python3.6
+
+  vars_files:
+    - host_vars/mrc.yaml
+  gather_facts: true
+  environment: '{{proxy_env}}'
+  roles:
+     - role: configure-server
+     - role: deploy-webapp
+     - role: deploy-harvester

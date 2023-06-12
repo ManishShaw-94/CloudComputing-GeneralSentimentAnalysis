@@ -1,0 +1,8 @@
+Password - M2JkYzI0M2UzODJmYjhj
+Instance Flavor - uom.mse.2c9g
+Availability Zone - melbourne-qh2-uom
+Image id - 916cad7a-c545-48b2-b36c-d509ee63b3ce 
+
+1) Instace IP - In Memory Inventory file
+2) SSH IP -> Inventory Keys store
+3) Copy file ->  

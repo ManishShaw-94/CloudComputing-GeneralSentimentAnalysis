@@ -1,0 +1,87 @@
+<!-- 
+   This is the blank HTML file in which the whole React applciation is loaded.
+   This HTML along with the bundled React code are the only 2 files sent to the
+   client. 
+   The bundled React code in imported in this HTML file through a <script />
+   which is appended by webpack through the "html-webpack-plugin".
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Poppins");
+      body {
+        margin: 0;
+        font-family: "Poppins" !important;
+      }
+      .pageLoaderContainer {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        z-index: 2;
+      }
+      .pageLoaderContainer .pageLoader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+      }
+      /* Safari */
+      @-webkit-keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .pageLoaderContainer .pageLoading {
+        color: #b1b1b1;
+        font-size: 17px;
+        text-align: center;
+        font-weight: 400;
+        font-family: cursive;
+        margin-top: 15px;
+      }
+      .pageLoaderContainer .pageLoadingMessage {
+        color: #b1b1b1;
+        font-size: 14px;
+        text-align: center;
+        font-weight: 400;
+        font-family: cursive;
+        margin-top: 15px;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <title>Group 65 - COMP90024 Assignment 2</title>
+  </head>
+  <body>
+    <div id="root">
+      <div class="pageLoaderContainer">
+        <div class="pageLoader"></div>
+        <div class="pageLoading">Loading...</div>
+        <div class="pageLoadingMessage">
+          This may take some time due to loading of the heavy GeoJSON file. We
+          request your patience.
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+---
+# Adding Proxy Settings to Enviornment File of Instance
+- name: update environment file
+  become: true
+  blockinfile:
+    dest: /etc/environment
+    block: |
+      HTTP_PROXY=http://wwwproxy.unimelb.edu.au:8000/
+      HTTPS_PROXY=http://wwwproxy.unimelb.edu.au:8000/
+      http_proxy=http://wwwproxy.unimelb.edu.au:8000/
+      https_proxy=http://wwwproxy.unimelb.edu.au:8000/
+      no_proxy=localhost,127.0.0.1,localaddress,172.16.0.0/12,.melbourne.rc.nectar.org.au,.storage.unimelb.edu.au,.cloud.unimelb.edu.au
+
+# Adding Proxy Settings to Docker
+- name: Create directory for docker proxy settings
+  become: true
+  shell: |
+    mkdir -p /etc/systemd/system/docker.service.d
+    touch /etc/systemd/system/docker.service.d/http-proxy.conf
+
+- name: Add Proxy settings to Docker
+  become: true  
+  blockinfile:
+    dest: /etc/systemd/system/docker.service.d/http-proxy.conf
+    block: |
+      [Service]
+      Environment="HTTP_PROXY=http://wwwproxy.unimelb.edu.au:8000/"
+      Environment="HTTPS_PROXY=http://wwwproxy.unimelb.edu.au:8000/"
+      Environment="http_proxy=http://wwwproxy.unimelb.edu.au:8000/"
+      Environment="https_proxy=http://wwwproxy.unimelb.edu.au:8000/"
+      Environment="no_proxy=localhost,127.0.0.1,localaddress,172.16.0.0/12,.melbourne.rc.nectar.org.au,.storage.unimelb.edu.au,.cloud.unimelb.edu.au"
+
+# Restart Docker Serivce
+- name: Docker Demon Reload
+  become: true  
+  shell: |
+    systemctl daemon-reload
+    systemctl restart docker 
+
+# update and upgrade instance
+- name: "apt-get update"
+  become: true
+  apt:
+    upgrade: yes
+    update_cache: yes
+    cache_valid_time: 86400 

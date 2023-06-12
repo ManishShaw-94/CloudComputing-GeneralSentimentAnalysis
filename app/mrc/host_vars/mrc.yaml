@@ -1,0 +1,58 @@
+# Instance
+instances:
+  - name: delta
+    volumes: ['vol-1']
+
+#  Ubuntu with Docker
+instance_image: 916cad7a-c545-48b2-b36c-d509ee63b3ce 
+instance_key_name: master-key
+instance_flavor: uom.mse.1c4g
+
+# Common vars
+availability_zone:  melbourne-qh2-uom
+
+# Volume
+volumes:
+  - vol_name: vol-1
+    vol_size: 10
+
+# Security group
+security_groups:
+  - name: ssh
+    description: "Security group for SSH access"
+    protocol: tcp
+    port_range_min: 22
+    port_range_max: 22
+    remote_ip_prefix: 0.0.0.0/0
+  - name: http
+    description: "Security group for HTTP"
+    protocol: tcp
+    port_range_min: 80
+    port_range_max: 80
+    remote_ip_prefix: 0.0.0.0/0
+
+proxy_env:
+  HTTP_PROXY: http://wwwproxy.unimelb.edu.au:8000/
+  HTTPS_PROXY: http://wwwproxy.unimelb.edu.au:8000/
+  http_proxy: http://wwwproxy.unimelb.edu.au:8000/
+  https_proxy: http://wwwproxy.unimelb.edu.au:8000/
+  no_proxy: localhost,127.0.0.1,localaddress,172.16.0.0/12,.melbourne.rc.nectar.org.au,.storage.unimelb.edu.au,.cloud.unimelb.edu.au
+
+# Path variables
+web_path: /home/ubuntu/comp90024
+twint_path: /home/ubuntu/twint
+
+# Container Information
+image_name: group65/webapp
+container_port: 7000
+container_name: webapp1
+
+# Git Credentials
+gituser: sawants
+gitpass: !vault |
+          $ANSIBLE_VAULT;1.2;AES256;git_user
+          35316133366565646366356564396538393865376430346330636663643631646433616362353630
+          3564393738376665386134323165643161643233383539380a336634323763393461323538623432
+          39343636323565303162356562626437303737346162333332356132656166636534643135303435
+          6539626637316165330a663963373433636639623132613234653736313432393161633234386633
+          6637

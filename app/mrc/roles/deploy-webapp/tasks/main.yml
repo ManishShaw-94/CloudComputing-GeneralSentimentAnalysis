@@ -1,0 +1,56 @@
+---
+# Cloning Repository
+- name: clone a private repository
+  become: true
+  git:
+    repo: "https://{{gituser}}:{{gitpass}}@gitlab.com/AbhishekYadav142110/comp90024-2.git"
+    dest: '{{web_path}}'
+    accept_hostkey: yes
+    force: yes
+    version: master
+
+
+- name: Ensure docker deamon is running
+  service:
+    name: docker
+    state: started
+  become: true
+
+# Build Docker image and start container
+- name: Build Docker Image
+  become: true
+  shell: 'docker build -t {{image_name}} {{web_path}}'
+
+- name: Remove container if Present and start New Container
+  become: true
+  shell: |  
+    docker stop {{container_name}} || true && docker rm {{container_name}} || true
+    docker run -d --name {{container_name}} -p {{container_port}}:{{container_port}} {{image_name}}
+
+
+# Install nginx 
+- name: "install nginx"
+  become: true
+  apt:
+    name: ['nginx']
+    state: latest
+
+# Configure nginx
+- name: delete default nginx site
+  become: true
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  
+
+- name: copy nginx conf
+  become: true
+  shell: 'cp {{web_path}}/nginx-default /etc/nginx/sites-enabled/default'
+  
+# Restart Application and Nginx Service
+- name: restart Services
+  become: true
+  shell: |
+    systemctl restart nginx
+    docker restart {{container_name}}
+    service nginx reload

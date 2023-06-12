@@ -1,0 +1,1 @@
+{"type":"FeatureCollection","bbox":[0.0,0.0,-1.0,-1.0],"features":[{"type":"Feature","properties":{"btovr_meas":6.54002E9,"lga_name":"Unincorporated ACT","btovr_rank":297.0,"btovr_sd":-0.19,"ogc_fid":560,"state":"ACT","wkage_sd":1.41,"wkage_rank":56.0,"markt_rank":88.0,"lga2011":89399,"wkage_meas":264826.0,"market_sd":0.61},"id":"rai_market_indicators_lga_2011.560"}]}
